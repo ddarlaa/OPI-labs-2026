@@ -20,7 +20,7 @@
 
 ### 1.4. Ссылки
 *   Веб-сайт проекта: [https://www.reverso.net](https://www.reverso.net)
-*   GDPR (General Data Protection Regulation) — регламент ЕС по защите персональных данных: [Ссылка на текст регламента]
+*   GDPR (General Data Protection Regulation) — регламент ЕС по защите персональных данных: [https://gdpr-info.eu]
 
 ### 1.5. Overview (Краткий обзор)
 Данный документ содержит следующие разделы:
