@@ -75,33 +75,39 @@
 ## 4. Диаграммы прецедентов (Use Case)
 
 Ниже представлена диаграмма, описывающая основные сценарии использования.
+```
+graph LR
+    %% Определение акторов (используем эмодзи для наглядности)
+    Guest["👤 Гость"]
+    RegUser["👤 Пользователь"]
+    API["🤖 API Перевода"]
 
-```mermaid
-usecaseDiagram
-    actor "Гость" as Guest
-    actor "Пользователь" as RegUser
-    actor "API Перевода" as API
+    %% Границы системы
+    subgraph System ["💻 Веб-сайт Reverso"]
+        direction TB
+        UC1(["Перевести текст"])
+        UC1_1(["Определить язык"])
+        UC2(["Найти в контексте"])
+        UC3(["Проверить орфографию"])
+        UC4(["Вход / Регистрация"])
+        UC5(["Сохранить в словарь"])
+        UC6(["Купить Premium"])
+    end
 
-    package "Веб-сайт Reverso" {
-        usecase "Перевести текст" as UC1
-        usecase "Определить язык" as UC1_1
-        usecase "Найти в контексте" as UC2
-        usecase "Проверить орфографию" as UC3
-        usecase "Вход / Регистрация" as UC4
-        usecase "Сохранить в словарь" as UC5
-        usecase "Купить Premium" as UC6
-    }
-
-    Guest <|-- RegUser
-
+    %% Связи для Гостя
     Guest --> UC1
     Guest --> UC2
     Guest --> UC3
     Guest --> UC4
 
-    UC1 ..> UC1_1 : <<include>>
-    UC1 --> API : запрос
+    %% Наследование (Гость -> Пользователь)
+    Guest -.-|> RegUser
 
+    %% Связи внутри системы (Include и связь с API)
+    UC1 -.->|include| UC1_1
+    UC1 --> API
+
+    %% Связи для Зарегистрированного пользователя
     RegUser --> UC5
     RegUser --> UC6
 ```
